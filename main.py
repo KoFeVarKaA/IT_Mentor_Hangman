@@ -48,10 +48,10 @@ def new_game():
 
 
         if flag == True:
-            print(f"Congratulations! Загаданное слово было {word}")
+            print(f"Congratulations!")
             new_game()
         else:
-            print("Oops. Looks like you lost.")
+            print(f"Oops. Looks like you lost. Загаданное слово было {word}")
             new_game()
         
 
