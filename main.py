@@ -1,20 +1,21 @@
 # Время потраченное на проект 1ч
 import random
-from words import words_dict
-from man import draws
+from data.words import words
+from data.man import draws
+from errors import Errors
 
 def new_game():
     print("Начать новую игру?  д/н")
     answ = input()
 
     if answ.lower() == "д":
-        word = words_dict[random.randint(1, 1001)]
+        word = words[random.randint(1, len(words))]
         word_mask = " " + "_ " * len(word)
         used_ch = ''
-        flag = True
+        is_win = True
         i_word, i_man = 0, 0
         lw = len(word)
-        while flag == True:
+        while is_win:
             if i_word == lw:
                 break
             print(f'''
@@ -28,11 +29,9 @@ def new_game():
             )
             ch = input().lower()
             if ch in used_ch or len(ch) > 1:
-                print('''ERROR input:
-                        Oh no, bro, u can't do so.
-                        You can only write one previously unused letter.''')
+                Errors.incorrect_input()
             elif i_man == 6:
-                flag = False
+                is_win = False
             elif ch in word:
                 i_word += word.count(ch)
                 for i in range(len(word)):
@@ -47,7 +46,7 @@ def new_game():
                 used_ch = used_ch + ch + ', '
 
 
-        if flag == True:
+        if is_win == True:
             print(f"Congratulations!")
             new_game()
         else:
@@ -59,7 +58,7 @@ def new_game():
         return
     
     else:
-        print("Error: The answer can only be 'д' or 'н'")
+        Errors.wrong_answer()
         new_game()
 
 new_game()
