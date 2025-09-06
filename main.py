@@ -2,9 +2,9 @@
 import random
 
 from app.data.words import words
-from app.stages.GameEndRestart import EndRestart
-from app.stages.GamePlay import Play
-from app.stages.GameStart import Start
+from app.stages.gameendrestart import EndRestart
+from app.stages.gameplay import Play
+from app.stages.gamestart import Start
 
 
 while True:
