@@ -1,4 +1,3 @@
-# Время потраченное на проект 1ч
 import random
 
 from app.data.words import words
